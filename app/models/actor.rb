@@ -13,7 +13,7 @@
 class Actor < ApplicationRecord
   validates(:name, presence: true)
   has_many(:characters)
-  has_many(:movies, through: :characters, source: :movie)
+  has_many(:filmography, through: :characters, source: :movie)
   # def characters
   #   key = self.id
 
@@ -22,15 +22,15 @@ class Actor < ApplicationRecord
   #   return the_many
   # end
 
-  def filmography
-    the_many = Array.new
+  # def filmography
+  #   the_many = Array.new
 
-    self.characters.each do |joining_record|
-      destination_record = joining_record.movie
+  #   self.characters.each do |joining_record|
+  #     destination_record = joining_record.movie
 
-      the_many.push(destination_record)
-    end
+  #     the_many.push(destination_record)
+  #   end
 
-    return the_many
-  end
+  #   return the_many
+  # end
 end
